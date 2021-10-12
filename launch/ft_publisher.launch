@@ -1,0 +1,18 @@
+<launch>
+    <arg name="port"       default="/dev/ttyACM0"/>
+    <arg name="baudrate"   default="2000000"/>
+    <arg name="topic"   default="resense_ft/wrench"/>
+    <arg name="frequency"  default="500"/>
+    <arg name="ns"         default="/"/>
+
+    <node name="wittenstain_ft"
+        pkg="wittenstain_ft_sensor"
+        type="publish_wittenstain_ft_sensor_data.py"
+        output="screen" 
+        ns="$(arg ns)">
+        <param name="port"    value="$(arg port)"/>
+        <param name="baudrate"   value="$(arg baudrate)"/>
+        <param name="topic" value="$(arg topic)"/>
+        <param name="frequency"        value="$(arg frequency)"/>
+    </node>
+</launch>
