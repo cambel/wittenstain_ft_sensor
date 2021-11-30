@@ -49,8 +49,8 @@ class serial_connection ():
                     msg = WrenchStamped()
                     msg.header.stamp = now
                     wrench = Wrench()
-                    wrench.force = Vector3(array[:3])
-                    wrench.torque = Vector3(array[3:])
+                    wrench.force = Vector3(*data[:3])
+                    wrench.torque = Vector3(*data[3:-1])
                     msg.wrench = wrench
 
                     self.publisher.publish(msg)
